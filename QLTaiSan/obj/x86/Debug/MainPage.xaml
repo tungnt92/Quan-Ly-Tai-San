@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="QLTaiSan.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QLTaiSan"
+    xmlns:converters="using:QLTaiSan.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
+        <converters:PriceKhauHaoToStringConverter x:Key="PriceKhauHaoToStringConverter" />
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:ConnectionId='1' Icon="Add" Label="thêm tài sản"
+                                                                 />
+            </CommandBar.PrimaryCommands>
+
+            <CommandBar.SecondaryCommands>
+                <!--<AppBarButton Icon="Setting" Label="check db"
+                              Click="CheckDbAppBarButton_Click" />-->
+                <AppBarButton x:ConnectionId='2' Name="introApp" Icon="Setting" Label="Giới thiệu"                        />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/Chocolate (cool).jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Margin="20"
+                   Text="Quản lý tài sản"
+                   Style="{StaticResource HeaderTextBlockStyle}" />
+
+        <!--<TextBlock Name="time" Text="" FontSize="20"/>-->
+        <ListView x:ConnectionId='3' x:Name="TaisanList" Grid.Row="1" Margin="20" IsItemClickEnabled="True"                                 >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10">
+                        <StackPanel.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="Assets/01.jpg"/>
+                        </StackPanel.Background>
+
+                        <!--<TextBlock Text="{Binding id}" FontSize="20"/>-->
+                        <TextBox Header="Tên tài sản:" Text="{Binding name}" IsHitTestVisible="False" Width="720"/>
+
+                        <!--<TextBox Header="Ngày mua tài sản:" Text="{Binding datebuy,Converter={StaticResource DateTimeToStringConverter}}" IsHitTestVisible="False"/>
+
+                        <TextBox Header="Nguyên giá mua tài sản:" Text="{Binding price,Mode=TwoWay}" IsHitTestVisible="False"/>
+
+                        <TextBox Header="Loại tài sản:" Text="{Binding loaitaisan}" IsHitTestVisible="False"/>-->
+
+                        <TextBox Header="Trị giá sau khấu hao:" Text="{Binding Converter={StaticResource PriceKhauHaoToStringConverter}}" IsHitTestVisible="False"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
+

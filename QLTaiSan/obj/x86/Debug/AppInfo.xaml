@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="QLTaiSan.AppInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QLTaiSan"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/Chocolate (cool).jpg"/>
+        </Grid.Background>
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="Giới thiệu" Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,12,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Việc xác định giá trị sau khấu hao của tài sản cố định như sau:
+                     Giá trị sau khấu hao tài sản cố định = Nguyên giá mua sắm - nguyên giá mua sắm x Tỷ lệ tính hao mòn x Số năm đã sữ dụng." 
+                       VerticalAlignment="Top" Height="526" Width="342" FontSize="21"/>
+
+        </Grid>
+    </Grid>
+</Page>
+
